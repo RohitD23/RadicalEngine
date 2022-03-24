@@ -1,0 +1,7 @@
+Radical.sln
+bin
+bin-int
+*.vcxproj
+*.vcxproj.user
+*.vcxproj.filters
+.vs
