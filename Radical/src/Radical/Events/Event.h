@@ -1,9 +1,6 @@
 #pragma once
 #include "Radical/Core.h"
 
-#include <string>
-#include <functional>
-
 namespace Radical
 {
 	// Events in Radical are currently blocking, meaning when an event occurs it

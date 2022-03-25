@@ -1,8 +1,6 @@
 #pragma once
 #include "Event.h"
 
-#include <sstream>
-
 namespace Radical
 {
 	class RL_API MouseMovedEvent : public Event

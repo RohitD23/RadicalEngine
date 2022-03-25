@@ -1,3 +1,4 @@
+#include "rlpch.h"
 #include "Application.h"
 
 #include "Radical/Events/ApplicationEvent.h"

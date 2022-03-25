@@ -18,6 +18,9 @@ project "Radical"
     targetdir ("bin/" .. outputDir .. "/%{prj.name}")
     objdir ("bin-int/" .. outputDir .. "/%{prj.name}")
 
+    pchheader "rlpch.h"
+    pchsource "Radical/src/rlpch.cpp"
+
     files
     {
         "%{prj.name}/src/**.h",
@@ -38,7 +41,7 @@ project "Radical"
 
     defines
     {
-        "RL_PLATFROM_WINDOWS",
+        "RL_PLATFORM_WINDOWS",
         "RL_BUILD_DLL"
     }
 
@@ -87,7 +90,7 @@ project "SandBox"
 
     defines
     {
-        "RL_PLATFROM_WINDOWS",
+        "RL_PLATFORM_WINDOWS",
     }
 
     filter "configurations:Debug"

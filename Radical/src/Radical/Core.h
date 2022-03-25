@@ -1,6 +1,6 @@
 #pragma once
 
-#ifdef RL_PLATFROM_WINDOWS
+#ifdef RL_PLATFORM_WINDOWS
 	#ifdef RL_BUILD_DLL
 		#define RL_API __declspec(dllexport)
 	#else

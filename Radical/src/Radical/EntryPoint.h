@@ -1,6 +1,6 @@
 #pragma once
 
-#ifdef RL_PLATFROM_WINDOWS
+#ifdef RL_PLATFORM_WINDOWS
 
 extern Radical::Application* Radical::CreateApplication();
 
