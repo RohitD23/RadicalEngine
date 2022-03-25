@@ -46,6 +46,7 @@ namespace Radical
 		{
 			std::stringstream ss;
 			ss << "KeyReleased: " << m_KeyCode;
+			return ss.str();
 		}
 
 		EVENT_CLASS_TYPE(KeyReleased)

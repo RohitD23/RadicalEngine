@@ -11,6 +11,8 @@
 #include <unordered_set>
 #include <sstream>
 
+#include "Radical/Log.h"
+
 #ifdef RL_PLATFORM_WINDOWS
 #include <Windows.h>
 #endif

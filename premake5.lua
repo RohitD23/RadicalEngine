@@ -10,6 +10,11 @@ workspace "Radical"
 
 outputDir = "%{cfg.buildcfg}-%{cfg.system}-%{cfg.architecture}"
 
+IncludeDir = {}
+IncludeDir["GLFW"] = "Radical/vendor/GLFW/include"
+
+include "Radical/vendor/GLFW"
+
 project "Radical"
     location "Radical"
     kind "SharedLib"
@@ -30,7 +35,14 @@ project "Radical"
     includedirs
     {
         "%{prj.name}/src",
-        "%{prj.name}/vendor/spdlog/include"
+        "%{prj.name}/vendor/spdlog/include",
+        "%{IncludeDir.GLFW}"
+    }
+
+    links
+    {
+        "GLFW",
+        "opengl32.lib"
     }
 
     filter "system:windows"
@@ -51,7 +63,11 @@ project "Radical"
     }
 
     filter "configurations:Debug"
-        defines "RL_DEBUG"
+        defines 
+        {
+            "RL_DEBUG",
+            "RL_ENABLE_ASSERTS"
+        }
         symbols "On"
 
     filter "configurations:Release"
@@ -75,7 +91,8 @@ project "SandBox"
     includedirs
     {
         "Radical/vendor/spdlog/include",
-        "Radical/src"
+        "Radical/src",
+        "Radical/vendor/GLFW/include"
     }
 
     links

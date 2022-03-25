@@ -1,23 +1,37 @@
 #include "rlpch.h"
 #include "Application.h"
 
-#include "Radical/Events/ApplicationEvent.h"
-#include "Radical/Log.h"
-
 namespace Radical
 {
+#define BIND_EVENT_FN(x) std::bind(&Application::x, this, std::placeholders::_1)
+
 	Application::Application()
 	{
+		m_Window = std::unique_ptr<Window>(Window::Create());
+		m_Window->SetEventCallback(BIND_EVENT_FN(OnEvent));
 	}
 
 	Application::~Application()
 	{
 	}
 
+	void Application::OnEvent(Event& e)
+	{
+		EventDispatcher dispatcher(e);
+		dispatcher.Dispatch<WindowClosedEvent>(BIND_EVENT_FN(OnWindowClose));
+	}
+
 	void Application::Run()
 	{
-		WindowResizeEvent e(1280, 720);
-		RL_TRACE(e);
-		while (true);
+		while (m_Running)
+		{
+			m_Window->OnUpdate();
+		}
+	}
+
+	bool Application::OnWindowClose(WindowClosedEvent& e)
+	{
+		m_Running = false;
+		return true;
 	}
 }
