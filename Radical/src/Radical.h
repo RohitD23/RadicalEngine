@@ -4,6 +4,7 @@
 
 #include "Radical/Application.h"
 #include "Radical/Log.h"
+#include "Radical/Layer.h"
 
 //----------Entry Point----------------
 #include "Radical/EntryPoint.h"

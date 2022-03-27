@@ -18,6 +18,7 @@ include "Radical/vendor/GLFW"
 project "Radical"
     location "Radical"
     kind "SharedLib"
+    staticruntime "Off"
     language "C++"
 
     targetdir ("bin/" .. outputDir .. "/%{prj.name}")
@@ -47,7 +48,6 @@ project "Radical"
 
     filter "system:windows"
         cppdialect "C++17"
-        staticruntime "On"
         systemversion "latest"
 
 
@@ -68,15 +68,18 @@ project "Radical"
             "RL_DEBUG",
             "RL_ENABLE_ASSERTS"
         }
+        runtime "Debug"
         symbols "On"
 
     filter "configurations:Release"
         defines "RL_RELEASE"
+        runtime "Release"
         optimize "On"
     
 project "SandBox"
     location "SandBox"
     kind "ConsoleApp"
+    staticruntime "Off"
     language "C++"
 
     targetdir ("bin/" .. outputDir .. "/%{prj.name}")
@@ -102,7 +105,6 @@ project "SandBox"
 
     filter "system:windows"
         cppdialect "C++17"
-        staticruntime "On"
         systemversion "latest"
 
     defines
@@ -112,8 +114,10 @@ project "SandBox"
 
     filter "configurations:Debug"
         defines "RL_DEBUG"
+        runtime "Debug"
         symbols "On"
 
     filter "configurations:Release"
         defines "RL_RELEASE"
+        runtime "Release"
         optimize "On"

@@ -1,8 +1,9 @@
 #pragma once
-#include "Core.h"
-#include "Window.h"
-#include "Events/Event.h"
-#include "Events/ApplicationEvent.h"
+#include "Radical/Core.h"
+#include "Radical/Window.h"
+#include "Radical/LayerStack.h"
+#include "Radical/Events/Event.h"
+#include "Radical/Events/ApplicationEvent.h"
 
 namespace Radical 
 {
@@ -16,11 +17,15 @@ namespace Radical
 
 		void OnEvent(Event& e);
 
+		void PushLayer(Layer* layer);
+		void PushOverlay(Layer* overlay);
+
 	private:
 		bool OnWindowClose(WindowClosedEvent& e);
 
 		std::unique_ptr <Window> m_Window;
 		bool m_Running = true;
+		LayerStack m_LayerStack;
 	};
 
 	//To Create Application at client side
