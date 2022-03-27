@@ -12,8 +12,10 @@ outputDir = "%{cfg.buildcfg}-%{cfg.system}-%{cfg.architecture}"
 
 IncludeDir = {}
 IncludeDir["GLFW"] = "Radical/vendor/GLFW/include"
+IncludeDir["Glad"] = "Radical/vendor/Glad/include"
 
 include "Radical/vendor/GLFW"
+include "Radical/vendor/Glad"
 
 project "Radical"
     location "Radical"
@@ -37,12 +39,14 @@ project "Radical"
     {
         "%{prj.name}/src",
         "%{prj.name}/vendor/spdlog/include",
-        "%{IncludeDir.GLFW}"
+        "%{IncludeDir.GLFW}",
+        "%{IncludeDir.Glad}"
     }
 
     links
     {
         "GLFW",
+        "Glad",
         "opengl32.lib"
     }
 
@@ -54,7 +58,8 @@ project "Radical"
     defines
     {
         "RL_PLATFORM_WINDOWS",
-        "RL_BUILD_DLL"
+        "RL_BUILD_DLL",
+        "GLFW_INCLUDE_NONE"
     }
 
     postbuildcommands
@@ -95,7 +100,8 @@ project "SandBox"
     {
         "Radical/vendor/spdlog/include",
         "Radical/src",
-        "Radical/vendor/GLFW/include"
+        "Radical/vendor/GLFW/include",
+        "Radical/vendor/glad/include"
     }
 
     links

@@ -5,6 +5,8 @@
 #include "Radical/Events/MouseEvent.h"
 #include "Radical/Events/KeyEvent.h"
 
+#include <glad/glad.h>
+
 namespace Radical
 {
 	static bool s_GLFWInitialized = false;
@@ -50,6 +52,8 @@ namespace Radical
 
 		m_Window = glfwCreateWindow((int)props.Width, (int)props.Height, m_Data.Title.c_str(), nullptr, nullptr);
 		glfwMakeContextCurrent(m_Window);
+		int status = gladLoadGLLoader((GLADloadproc)glfwGetProcAddress);
+		RL_CORE_ASSERT(status, "Could not intialize GLAD!");
 		glfwSetWindowUserPointer(m_Window, &m_Data);
 		SetVSync(true);
 
